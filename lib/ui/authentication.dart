@@ -1,3 +1,4 @@
+import 'package:crypto_wallet/net/flutterfire.dart';
 import 'package:flutter/material.dart';
 
 class Authentication extends StatefulWidget {
@@ -44,7 +45,13 @@ class _AuthenticatedState extends State<Authentication> {
                       borderRadius: BorderRadius.circular(15.0),
                       color: Colors.white),
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      bool shouldNavigate =
+                          await register(_emailField.text, _passwordField.text);
+                      if (shouldNavigate) {
+                        // Navigate
+                      }
+                    },
                     child: Text("Register"),
                   ),
                 ),
@@ -55,7 +62,13 @@ class _AuthenticatedState extends State<Authentication> {
                       borderRadius: BorderRadius.circular(15.0),
                       color: Colors.white),
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      bool shouldNavigate =
+                          await login(_emailField.text, _passwordField.text);
+                      if (shouldNavigate) {
+                        // Navigate
+                      }
+                    },
                     child: Text("Login"),
                   ),
                 ),

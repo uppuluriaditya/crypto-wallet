@@ -1,6 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<void> login(String email, String password) async {}
+Future<bool> login(String email, String password) async {
+  try {
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+    return true;
+  } catch (e) {
+    print(e.toString());
+    return false;
+  }
+}
 
 //Provider package
 Future<bool> register(String email, String password) async {
